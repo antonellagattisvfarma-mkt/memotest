@@ -80,6 +80,49 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+// -----------------------------
+// VALIDACIÓN EMAIL
+// -----------------------------
+function isValidEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+// -----------------------------
+// ENVÍO MAIL (POPUP WIN)
+// -----------------------------
+document.addEventListener("click", (e) => {
+  if (e.target.id !== "claimBtn") return;
+
+  const emailInput = document.getElementById("claimEmail");
+  const email = emailInput.value.trim();
+
+  if (!isValidEmail(email)) {
+    alert("Ingresá un email válido");
+    return;
+  }
+
+  fetch("https://script.google.com/macros/s/TU_SCRIPT_ID/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      email: email,
+      points: 100,
+      campaign: "Memotest SVFarma"
+    }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(() => {
+    document.getElementById("claimMsg").style.display = "block";
+    emailInput.disabled = true;
+    document.getElementById("claimBtn").disabled = true;
+  })
+  .catch(() => {
+    alert("Error al enviar, intentá nuevamente");
+  });
+});
+
 
 
 
