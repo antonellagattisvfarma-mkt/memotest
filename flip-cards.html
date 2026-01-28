@@ -8,13 +8,31 @@
 
 <!-- POPUP WIN -->
 <div id="winModal" class="win-modal">
-  <div class="win-box">
-    <img src="images/memo-win.png" alt="Farmito ganador">
-    <div class="win-text">
-      <div class="win-title">¡FELICITACIONES!</div>
-      <div class="win-subtitle">GANASTE 100 PUNTOS</div>
-    </div>
+  <div class="win-content">
+
+  <img src="images/memo-win.png" class="win-img">
+
+  <div class="win-text">
+    <h2>¡FELICITACIONES!</h2>
+    <p class="points">⭐GANASTE 100 PUNTOS⭐</p>
+
+    <input
+      type="email"
+      id="claimEmail"
+      placeholder="Ingresá tu email"
+    />
+
+    <button id="claimBtn">
+      OK
+    </button>
+
+    <p id="claimMsg" class="success-msg">
+      Te estamos acreditando tus puntos😎<br>
+      Los vas a ver reflejados en tu cuenta.
+    </p>
   </div>
+
+</div>
 </div>
 
 <body>
@@ -31,3 +49,4 @@
   <script src="flip-cards.js"></script>
 </body>
 </html>
+
