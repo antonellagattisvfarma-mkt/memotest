@@ -92,23 +92,34 @@ function isValidEmail(email) {
 // -----------------------------
 // ENVÍO MAIL (POPUP WIN)
 // -----------------------------
-document.addEventListener("click", (e) => {
-  if (e.target.id !== "claimBtn") return;
+  document.getElementById("claimBtn").addEventListener("click", () => {
+    const email = document.getElementById("emailInput").value.trim();
+    const msg = document.getElementById("msg");
 
-  const emailInput = document.getElementById("claimEmail");
-  const email = emailInput.value.trim();
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!isValidEmail(email)) {
-    alert("Ingresá un email válido");
+    if (!emailValido.test(email)) {
+    msg.textContent = "Ingresá un mail válido";
     return;
   }
 
-  fetch("https://script.google.com/macros/s/TU_SCRIPT_ID/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      email: email,
-      points: 100,
-      campaign: "Memotest SVFarma"
+  enviarMailYPuntos(email);
+
+  msg.textContent = "Te estamos acreditando tus puntos 💙";
+});
+
+  }
+
+  fetch("https://script.google.com/macros/s/AKfycbwX284vtN4pjx11yuqqPvLDKmzSisi9bSoF6VQ60LDaOS684NzGiNdjbfSpRpjzXw0mEw/exec", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    email: email,
+    points: 100,
+    campaign: "Memotest SVFarma"
+  })
+});
+
     }),
     headers: {
       "Content-Type": "application/json"
@@ -138,6 +149,7 @@ function enviarMailYPuntos(email) {
     })
   });
 }
+
 
 
 
