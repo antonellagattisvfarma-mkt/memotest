@@ -2,17 +2,17 @@ console.log("JS cargado OK");
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const BACK_IMAGE = "images/memocard-0.png";
+  const BACK_IMAGE = "memocard-0.png";
 
   const baseCards = [
-    { id: 1, img: "images/memocard-1.png" },
-    { id: 2, img: "images/memocard-2.png" },
-    { id: 3, img: "images/memocard-3.png" },
-    { id: 4, img: "images/memocard-4.png" },
-    { id: 5, img: "images/memocard-5.png" },
-    { id: 6, img: "images/memocard-6.png" },
-    { id: 7, img: "images/memocard-7.png" },
-    { id: 8, img: "images/memocard-8.png" }
+  { id: 1, img: "memocard-1.png" },
+  { id: 2, img: "memocard-2.png" },
+  { id: 3, img: "memocard-3.png" },
+  { id: 4, img: "memocard-4.png" },
+  { id: 5, img: "memocard-5.png" },
+  { id: 6, img: "memocard-6.png" },
+  { id: 7, img: "memocard-7.png" },
+  { id: 8, img: "memocard-8.png" }
   ];
 
   let cards = [...baseCards, ...baseCards].sort(() => 0.5 - Math.random());
@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
 
 
 
