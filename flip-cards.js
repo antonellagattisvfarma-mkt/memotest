@@ -1,4 +1,5 @@
 console.log("JS cargado OK");
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwX284vtN4pjx11yuqqPvLDKmzSisi9bSoF6VQ60LDaOS684NzGiNdjbfSpRpjzXw0mEw/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -122,6 +123,22 @@ document.addEventListener("click", (e) => {
     alert("Error al enviar, intentá nuevamente");
   });
 });
+
+function enviarMailYPuntos(email) {
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: email,
+      puntos: 100,
+      fecha: new Date().toISOString()
+    })
+  });
+}
+
 
 
 
