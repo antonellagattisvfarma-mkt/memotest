@@ -110,13 +110,16 @@ function isValidEmail(email) {
 
   }
 
-  fetch("https://script.google.com/macros/s/AKfycbwX284vtN4pjx11yuqqPvLDKmzSisi9bSoF6VQ60LDaOS684NzGiNdjbfSpRpjzXw0mEw/exec", {
+ fetch("https://script.google.com/macros/s/AKfycbwX284vtN4pjx11yuqqPvLDKmzSisi9bSoF6VQ60LDaOS684NzGiNdjbfSpRpjzXw0mEw/exec", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     email: email,
     points: 100,
     campaign: "Memotest SVFarma"
+  })
+});
+
   })
 });
 
@@ -155,6 +158,7 @@ function enviarMailYPuntos(email) {
     console.error("Error:", err);
   });
 }
+
 
 
 
