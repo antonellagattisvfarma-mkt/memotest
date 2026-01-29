@@ -1,5 +1,8 @@
 console.log("JS cargado OK");
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwX284vtN4pjx11yuqqPvLDKmzSisi9bSoF6VQ60LDaOS684NzGiNdjbfSpRpjzXw0mEw/exec";
+
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwX284vtN4pjx11yuqqPvLDKmzSisi9bSoF6VQ60LDaOS684NzGiNdjbfSpRpjzXw0mEw/exec";
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const BACK_IMAGE = "memocard-0.png";
@@ -18,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = [...baseCards, ...baseCards].sort(() => 0.5 - Math.random());
   const parent = document.querySelector(".parent");
 
+  /* ===== CREAR CARTAS ===== */
   cards.forEach(card => {
     const div = document.createElement("div");
     div.className = "child";
@@ -35,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lock = false;
   let pairs = 0;
 
+  /* ===== LÓGICA DEL JUEGO ===== */
   parent.addEventListener("click", (e) => {
     const card = e.target.closest(".child");
     if (!card || lock || card.classList.contains("open") || card.classList.contains("matched")) return;
@@ -57,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (pairs === 8) {
           document.getElementById("winModal").classList.add("show");
         }
+
       } else {
         setTimeout(() => {
           opened.forEach(c => {
@@ -71,39 +77,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // BOTÓN RECLAMAR
-document.getElementById("claimBtn").addEventListener("click", () => {
-  const emailInput = document.getElementById("claimEmail");
-  const msg = document.getElementById("claimMsg");
-  const email = emailInput.value.trim();
+  /* ===== BOTÓN RECLAMAR ===== */
+  const claimBtn = document.getElementById("claimBtn");
 
-  msg.style.color = "#fff";
+  if (claimBtn) {
+    claimBtn.addEventListener("click", () => {
+      const emailInput = document.getElementById("claimEmail");
+      const msg = document.getElementById("claimMsg");
+      const email = emailInput.value.trim();
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    msg.textContent = "Ingresá un email válido";
-    return;
-  }
+      msg.style.color = "#000";
 
-  msg.textContent = "Te estamos acreditando tus puntos 💙";
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.textContent = "Ingresá un email válido";
+        return;
+      }
 
-  fetch(SCRIPT_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      email,
-      points: 100,
-      campaign: "Memotest SVFarma"
-    })
-  })
-  .then(() => {
-    msg.textContent = "✅ Puntos acreditados. Los vas a ver en tu cuenta.";
-    emailInput.disabled = true;
-    document.getElementById("claimBtn").disabled = true;
-  })
-  .catch(() => {
-    msg.textContent = "❌ Error al enviar, intentá nuevamente";
-  });
-});
+      msg.textContent = "Te estamos acreditando tus puntos 💙";
+
+      fetch(SCRIPT_URL, {
+        method: "PO
 
 
 
