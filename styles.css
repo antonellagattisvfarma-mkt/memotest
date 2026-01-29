@@ -24,7 +24,7 @@ html, body {
   gap: 8px;
   padding: 8px;
 
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
 
   background: #000;
@@ -75,8 +75,8 @@ html, body {
 .modal-content {
   background: #fff;
   color: #000;
-  padding: 24px;
-  border-radius: 16px;
+  padding: 30px;
+  border-radius: 22px;
   text-align: center;
 
   width: 90%;
@@ -98,4 +98,5 @@ html, body {
   padding: 10px;
   cursor: pointer;
 }
+
 
