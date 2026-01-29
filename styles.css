@@ -14,20 +14,33 @@ html, body {
 
 /* CONTENEDOR GENERAL */
 .parent {
-  width: 100vw;
-  height: 100vh;
-
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-
-  gap: 8px;
-  padding: 8px;
-
-  max-width: 1200px;
-  margin: 0 auto;
-
+  gap: 10px;
+  padding: 10px;
   background: #000;
+  margin: 0 auto;
+}
+
+/* MOBILE (default) */
+@media (max-width: 768px) {
+  .parent {
+    width: 100vw;
+    height: 100vh;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 769px) {
+  .parent {
+    width: 720px;
+    height: 720px;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
 }
 
 
@@ -98,5 +111,6 @@ html, body {
   padding: 10px;
   cursor: pointer;
 }
+
 
 
