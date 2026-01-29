@@ -136,19 +136,27 @@ function isValidEmail(email) {
 });
 
 function enviarMailYPuntos(email) {
-  fetch(SCRIPT_URL, {
+  fetch("https://script.google.com/macros/s/AKfycbwX284vtN4pjx11yuqqPvLDKmzSisi9bSoF6VQ60LDaOS684NzGiNdjbfSpRpjzXw0mEw/exec", {
     method: "POST",
-    mode: "no-cors",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
       email: email,
-      puntos: 100,
-      fecha: new Date().toISOString()
+      points: 100,
+      campaign: "Memotest SVFarma"
     })
+  })
+  .then(res => res.text())
+  .then(data => {
+    console.log("OK:", data);
+  })
+  .catch(err => {
+    console.error("Error:", err);
   });
 }
+
+
 
 
 
