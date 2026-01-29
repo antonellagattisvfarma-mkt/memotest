@@ -1,7 +1,5 @@
 console.log("JS cargado OK");
-
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwX284vtN4pjx11yuqqPvLDKmzSisi9bSoF6VQ60LDaOS684NzGiNdjbfSpRpjzXw0mEw/exec";
-
 document.addEventListener("DOMContentLoaded", () => {
 
   const BACK_IMAGE = "memocard-0.png";
@@ -74,35 +72,40 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // BOTÓN RECLAMAR
-  document.getElementById("claimBtn").addEventListener("click", () => {
-    const emailInput = document.getElementById("claimEmail");
-    const msg = document.getElementById("claimMsg");
-    const email = emailInput.value.trim();
+document.getElementById("claimBtn").addEventListener("click", () => {
+  const emailInput = document.getElementById("claimEmail");
+  const msg = document.getElementById("claimMsg");
+  const email = emailInput.value.trim();
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      msg.textContent = "Ingresá un email válido";
-      return;
-    }
+  msg.style.color = "#fff";
 
-    fetch(SCRIPT_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        points: 100,
-        campaign: "Memotest SVFarma"
-      })
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    msg.textContent = "Ingresá un email válido";
+    return;
+  }
+
+  msg.textContent = "Te estamos acreditando tus puntos 💙";
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email,
+      points: 100,
+      campaign: "Memotest SVFarma"
     })
-    .then(() => {
-      msg.textContent = "Puntos acreditados 🎉";
-      emailInput.disabled = true;
-    })
-    .catch(() => {
-      msg.textContent = "Error al enviar";
-    });
+  })
+  .then(() => {
+    msg.textContent = "✅ Puntos acreditados. Los vas a ver en tu cuenta.";
+    emailInput.disabled = true;
+    document.getElementById("claimBtn").disabled = true;
+  })
+  .catch(() => {
+    msg.textContent = "❌ Error al enviar, intentá nuevamente";
   });
-
 });
+
+
 
 
 
