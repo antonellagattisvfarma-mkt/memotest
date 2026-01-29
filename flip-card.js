@@ -117,3 +117,8 @@ function enviarMailYPuntos(email) {
   .then(data => console.log("OK:", data))
   .catch(err => console.error("Error:", err));
 }
+
+  .then(res => res.text())
+  .then(data => console.log("OK:", data))
+  .catch(err => console.error("Error:", err));
+}
