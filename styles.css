@@ -8,7 +8,7 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow: hidden; /* clave para que no scrollee */
+  overflow: hidden; 
   background: #000;
 }
 
@@ -21,22 +21,22 @@ html, body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
 
-  gap: 12px;
-  padding: 12px;
+  gap: 8px;
+  padding: 8px;
+
+  max-width: 900px;
+  margin: 0 auto;
 
   background: #000;
 }
+
 
 /* CARTA */
 .child {
   position: relative;
   width: 100%;
   height: 100%;
-
-  max-width: 100%;
-  max-height: 100%;
-
-  overflow: hidden; /* evita que la imagen explote */
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -44,14 +44,11 @@ html, body {
 .child img {
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-
-  object-fit: contain; /* no se estira */
+  object-fit: cover;
   display: block;
 }
-/* ===== MODAL WIN ===== */
 
+/* ===== MODAL WIN ===== */
 .modal {
   position: fixed;
   inset: 0;
@@ -101,3 +98,4 @@ html, body {
   padding: 10px;
   cursor: pointer;
 }
+
